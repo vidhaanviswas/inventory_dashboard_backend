@@ -39,12 +39,12 @@ app.use(
 app.use(express.json());
 
 // ---------- ROUTES ----------
-app.use('/api/auth', authRoutes);
-app.use('/api/skus', skuRoutes);
-app.use('/api/inventory', inventoryRoutes);
-app.use('/api/warehouses', warehouseRoutes);
-app.use('/api/stats', statsRoutes);
-app.use('/api/alerts', alertsRoutes);
+app.use('api/auth', authRoutes);
+app.use('api/skus', skuRoutes);
+app.use('api/inventory', inventoryRoutes);
+app.use('api/warehouses', warehouseRoutes);
+app.use('api/stats', statsRoutes);
+app.use('api/alerts', alertsRoutes);
 
 // Simple health check for Render
 app.get('/', (req, res) => {
