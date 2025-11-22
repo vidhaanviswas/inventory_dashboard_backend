@@ -14,14 +14,14 @@ const app = express();
 
 // ---------- CORS CONFIG ----------
 const allowedOrigins = [
-  'http://localhost:5173',                // local Vite
-  process.env.FRONTEND_URL,               // Vercel URL, e.g. https://your-app.vercel.app
-].filter(Boolean); // remove undefined
+  'http://localhost:5173', // local dev
+  'https://inventory-dashboard-frontend-dusky.vercel.app', // your Vercel app
+];
 
 app.use(
   cors({
-    origin: (origin, callback) => {
-      // allow server-to-server / curl / Postman with no origin
+    origin: function (origin, callback) {
+      // Allow non-browser tools (Postman, curl)
       if (!origin) return callback(null, true);
 
       if (allowedOrigins.includes(origin)) {
@@ -34,6 +34,7 @@ app.use(
     credentials: true,
   })
 );
+
 
 app.use(express.json());
 
